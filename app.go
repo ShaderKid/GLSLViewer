@@ -1,8 +1,8 @@
 package main
 
 import (
-	//"fmt"
 	"./packages/shader"
+	"fmt"
 	"github.com/go-gl/gl/v4.1-core/gl"
 	"github.com/go-gl/glfw/v3.2/glfw"
 	"runtime"
@@ -13,6 +13,12 @@ const defaultWindowHeight = 480
 
 func init() {
 	runtime.LockOSThread()
+}
+
+func dropCallback(w *glfw.Window, files []string) {
+	for index, file := range files {
+		fmt.Println(index, file)
+	}
 }
 
 func main() {
@@ -31,6 +37,8 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+
+	window.SetDropCallback(dropCallback)
 
 	window.MakeContextCurrent()
 

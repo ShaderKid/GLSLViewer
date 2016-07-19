@@ -18,10 +18,3 @@ $ go run app.go
 ```bash
 $ go build app.go
 ```
-
-### .app
-```bash
-$ go build app.go -o glslviewer
-$ mkdir -p GLSLViewer.app/Contents/MacOS GLSLViewer.app/Contents/Resources
-$ mv glslviewer GLSLViewer.app/Contents/MacOS/glslviewer
-```

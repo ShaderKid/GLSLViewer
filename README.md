@@ -21,7 +21,8 @@ $ go build app.go
 
 ### .app
 ```bash
-$ go build app.go -o glslviewer
+$ go build --tags=app app.go -o glslviewer
 $ mkdir -p GLSLViewer.app/Contents/MacOS GLSLViewer.app/Contents/Resources
 $ mv glslviewer GLSLViewer.app/Contents/MacOS/glslviewer
+$ cp -r glsl GLSLViewer.app/Contents/Resources/
 ```

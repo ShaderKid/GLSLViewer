@@ -1,6 +1,7 @@
 package main
 
 import (
+	"./packages/env"
 	"./packages/shader"
 	"fmt"
 	"github.com/go-gl/gl/v4.1-core/gl"
@@ -124,7 +125,7 @@ func main() {
 	gl.BindBuffer(gl.ARRAY_BUFFER, vertexBuffer)
 	gl.BufferData(gl.ARRAY_BUFFER, len(vertexBufferData)*4, gl.Ptr(vertexBufferData), gl.STATIC_DRAW)
 
-	sh := newShader("./glsl/default.vs", "./glsl/default.fs")
+	sh := newShader(env.ResourcePath+"glsl/default.vs", env.ResourcePath+"glsl/default.fs")
 	window.SetDropCallback(sh.dropCallback)
 
 	gl.Enable(gl.DEPTH_TEST)

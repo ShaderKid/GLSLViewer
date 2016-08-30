@@ -18,7 +18,6 @@ $ go run app.go
 ```bash
 $ go build app.go
 ```
-<<<<<<< HEAD
 
 ### .app
 ```bash
@@ -28,4 +27,3 @@ $ mv glslviewer GLSLViewer.app/Contents/MacOS/glslviewer
 $ cp -r glsl GLSLViewer.app/Contents/Resources/
 ```
 =======
->>>>>>> 1954c6533731f9f5cff7ec7b68bb5980a5c83c90

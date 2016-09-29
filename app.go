@@ -128,6 +128,10 @@ func main() {
 	sh := newShader(env.ResourcePath+"glsl/default.vs", env.ResourcePath+"glsl/default.fs")
 	window.SetDropCallback(sh.dropCallback)
 
+	//var time_id int32 = gl.GetUniformLocation(sh.program, gl.Str("time\x00"))
+	//var resolution_id int32 = gl.GetUniformLocation(sh.program, gl.Str("resolution\x00"))
+	//var mouse_id int32 = gl.GetUniformLocation(sh.program, gl.Str("mouse\x00"))
+
 	gl.Enable(gl.DEPTH_TEST)
 	gl.DepthFunc(gl.LESS)
 
@@ -136,6 +140,14 @@ func main() {
 		gl.Clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT)
 		sh.checkUpdate()
 		sh.useProgram()
+		var time_id int32 = gl.GetUniformLocation(sh.program, gl.Str("time\x00"))
+		gl.Uniform1f(time_id, float32(glfw.GetTime()))
+		var width, height int = window.GetSize()
+		var mouse_x, mouse_y float64 = window.GetCursorPos()
+		var resolution_id int32 = gl.GetUniformLocation(sh.program, gl.Str("resolution\x00"))
+		gl.Uniform2f(resolution_id, float32(width), float32(height))
+		var mouse_id int32 = gl.GetUniformLocation(sh.program, gl.Str("mouse\x00"))
+		gl.Uniform2f(mouse_id, float32(mouse_x/float64(width)), float32(mouse_y/float64(height)))
 
 		gl.EnableVertexAttribArray(0)
 		gl.BindBuffer(gl.ARRAY_BUFFER, vertexBuffer)
